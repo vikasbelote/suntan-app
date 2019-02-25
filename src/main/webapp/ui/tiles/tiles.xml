@@ -5,17 +5,28 @@
 
 <tiles-definitions>
 
-	<definition name="mainLayout" template="/ui/jsp/layout/main.jsp">
+	<definition name="loginLayout" template="/ui/jsp/layout/login.jsp">
+	</definition>
+	
+	<definition name="registerLayout" template="/ui/jsp/layout/register.jsp">
+	</definition>
+	
+	<definition name="homeLayout" template="/ui/jsp/layout/main.jsp">
 		<put-attribute name="header" value="/ui/jsp/layout/header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/ui/jsp/layout/footer.jsp" />
 	</definition>
 	
-	<definition name="dashboard" extends="mainLayout">
+	
+	<definition name="login" extends="loginLayout">
+	</definition>
+	
+	<definition name="register" extends="registerLayout">
+	</definition>
+	
+	<definition name="dashboard" extends="homeLayout">
 		<put-attribute name="body" value="/ui/jsp/view/dashboard.jsp" />
 	</definition>
 
-	<definition name="home" extends="mainLayout">
-	</definition>
 
 </tiles-definitions>
