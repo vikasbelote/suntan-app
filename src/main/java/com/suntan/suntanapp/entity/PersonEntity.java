@@ -3,18 +3,18 @@ package com.suntan.suntanapp.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -32,12 +32,12 @@ public class PersonEntity extends BaseEntity{
 	@Column(name="person_id")
 	private Long personId;
 	
-	@OneToOne(mappedBy="personEntity")
-	@Cascade(value=CascadeType.ALL)
+	@OneToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="user_id")
 	private UserEntity userEntity;
 	
-	@OneToOne(mappedBy="personEntity")
-	@Cascade(value=CascadeType.ALL)
+	@OneToOne(cascade= CascadeType.ALL)
+	@JoinColumn(name="address_id")
 	private AddressEntity addressEntity;
 	
 	@Column(name="first_name")

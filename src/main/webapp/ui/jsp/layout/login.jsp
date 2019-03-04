@@ -1,4 +1,5 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
@@ -62,12 +63,12 @@
                 <!-- end login-header -->
                 <!-- begin login-content -->
                 <div class="login-content">
-                    <form action="index.html" method="GET" class="margin-bottom-0">
+                    <form:form action="login" modelAttribute="loginDTO" class="margin-bottom-0">
                         <div class="form-group m-b-15">
-                            <input type="text" class="form-control form-control-lg" placeholder="Email Address" required />
+                            <input type="text" name="userName" class="form-control form-control-lg" placeholder="Email Address" required />
                         </div>
                         <div class="form-group m-b-15">
-                            <input type="password" class="form-control form-control-lg" placeholder="Password" required />
+                            <input type="password" name="userPassword" class="form-control form-control-lg" placeholder="Password" required />
                         </div>
                         <div class="checkbox checkbox-css m-b-30">
 							<input type="checkbox" id="remember_me_checkbox" value="" />
@@ -83,9 +84,9 @@
                         </div>
                         <hr />
                         <p class="text-center text-grey-darker">
-                            &copy; Color Admin All Right Reserved 2018
+                            &copy; Suntan finserv Right Reserved 2018
                         </p>
-                    </form>
+                    </form:form>
                 </div>
                 <!-- end login-content -->
             </div>

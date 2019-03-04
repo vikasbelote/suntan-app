@@ -13,6 +13,6 @@ public class PersonService {
 	private PersonRepository personRepository;
 	
 	public void savePerson(PersonEntity personEntity) {
-		personRepository.save(personEntity);
+		personRepository.saveAndFlush(personEntity);
 	}
 }

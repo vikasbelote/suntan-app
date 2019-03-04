@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.suntan.suntanapp.dto.LoginDTO;
 import com.suntan.suntanapp.dto.RegisterDTO;
 import com.suntan.suntanapp.service.UserService;
 
@@ -18,10 +19,15 @@ public class LoginAndRegisterController {
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView login() {
-    	ModelAndView model = new ModelAndView();
-    	model.setViewName("login");
-    	return model;
+    	return new ModelAndView("login", "loginDTO",  new LoginDTO());
     }
+	
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String loginPost(@ModelAttribute("loginDTO")LoginDTO loginDTO) {
+		if(userService.validateUserAndPassword(loginDTO))
+			return "redirect:/dashboard";
+		return "redirect:/";
+	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView register() {    	

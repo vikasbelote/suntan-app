@@ -7,5 +7,7 @@ import com.suntan.suntanapp.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
+	
+	UserEntity findByUserNameAndUserPassword(String userName, String userPassword);
 
 }

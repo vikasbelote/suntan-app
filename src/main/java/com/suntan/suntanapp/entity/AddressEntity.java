@@ -42,8 +42,7 @@ public class AddressEntity extends BaseEntity{
 	@Column(name = "state")
 	private String state;
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(mappedBy = "addressEntity")
 	private PersonEntity personEntity;
 	
 	@Column(nullable = false, updatable = false)

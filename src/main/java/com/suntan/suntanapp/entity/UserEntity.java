@@ -36,8 +36,7 @@ public class UserEntity extends BaseEntity {
 	@Column(name="user_password")
 	private String userPassword;
 	
-	@OneToOne
-	@PrimaryKeyJoinColumn
+	@OneToOne(mappedBy = "userEntity")
 	private PersonEntity personEntity;
 	
 	@Column(nullable = false, updatable = false)

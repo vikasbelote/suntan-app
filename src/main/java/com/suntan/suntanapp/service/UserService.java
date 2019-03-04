@@ -3,6 +3,7 @@ package com.suntan.suntanapp.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.suntan.suntanapp.dto.LoginDTO;
 import com.suntan.suntanapp.dto.RegisterDTO;
 import com.suntan.suntanapp.entity.PersonEntity;
 import com.suntan.suntanapp.entity.UserEntity;
@@ -22,7 +23,6 @@ public class UserService {
 		UserEntity userEntity = new UserEntity();
 		userEntity.setUserName(registerDTO.getEmailAddress());
 		userEntity.setUserPassword(registerDTO.getUserPassword());
-		this.saveUser(userEntity);
 		
 		PersonEntity personEntity = new PersonEntity();
 		personEntity.setFirstName(registerDTO.getFirstName());
@@ -34,6 +34,14 @@ public class UserService {
 	
 	public void saveUser(UserEntity userEntity) {
 		userRepository.save(userEntity);
+	}
+	
+	public boolean validateUserAndPassword(LoginDTO loginDTO) {
+		UserEntity userEntity = userRepository.findByUserNameAndUserPassword(loginDTO.getUserName(),
+				loginDTO.getUserPassword());
+		if(userEntity == null)
+			return false;
+		return true;
 	}
 
 }
